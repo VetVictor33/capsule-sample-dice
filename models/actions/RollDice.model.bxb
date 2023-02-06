@@ -14,6 +14,16 @@ action (RollDice) {
           }
         }
       }
+
+      validate {
+        if (numDice < 1) {
+          prompt {
+            dialog {
+              template ("You must have at least one dice.")
+            }
+          }
+        }
+      }
     }
 
     input (numSides) {
@@ -26,6 +36,16 @@ action (RollDice) {
           goal {NumSidesConcept}
           value {
             NumSidesConcept (6)
+          }
+        }
+      }
+
+      validate {
+        if (numSides < 2) {
+          prompt {
+            dialog {
+              template ("A dice must have at least two sides.")
+            }
           }
         }
       }

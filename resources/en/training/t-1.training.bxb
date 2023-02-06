@@ -1,0 +1,4 @@
+train (t-1ba7zw77yu303sq06s4appxaf) {
+  utterance ("[g:RollResultConcept] Roll (6)[v:NumDiceConcept] dices of (12)[v:NumSidesConcept] sides")
+  last-modified (1675710354959)
+}
