@@ -1,0 +1,46 @@
+result-view {
+  match {
+    RollResultConcept (rollResult){
+      from-output: RollDice (rollOutput)
+    }
+  }
+  message {
+    if (rollOutput.numDice == 1) {
+      template("You've got a ${value(rollResult.roll)}!!!")
+    }
+    if ((rollOutput.numDice > 1) && (rollOutput.numDice <= 10)){
+      choose (Random) {
+        template ("The sum is ${value(rollResult.sum)}")
+        template ("You rolled ${list(rollResult.roll, 'value' )}")
+      }
+    }
+    if (rollOutput.numDice > 10) {
+      choose (Random) {
+        template ("Woah! High roller!")
+        template ("${value(rollOutput.numDice)} dices?! You were made for Vegas!")
+      }
+    }
+  }
+  
+  render {
+    layout {
+      section {
+        content {
+          single-line {
+            text {
+              style (Detail_M)
+              value ("Rolled dice sum: #{value(rollResult.sum)}")
+            }
+          }
+          single-line {
+            text {
+              style (Detail_M)
+              value ("Number of rolls: #{value(rollResult.roll)}")
+            }
+          }
+        }
+
+      }
+    }
+  }
+}

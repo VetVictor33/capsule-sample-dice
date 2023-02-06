@@ -1,17 +1,35 @@
 action (RollDice) {
+  type (Calculation)
   collect{
     input (numDice) {
       type (NumDiceConcept)
       min (Required)
       max (One)
+
+      default-init {
+        intent{
+          goal {NumDiceConcept}
+          value {
+            NumDiceConcept (2)
+          }
+        }
+      }
     }
 
     input (numSides) {
       type (NumSidesConcept)
       min (Required)
       max (One)
+
+      default-init {
+        intent {
+          goal {NumSidesConcept}
+          value {
+            NumSidesConcept (6)
+          }
+        }
+      }
     }
   } 
   output (RollResultConcept)
-  type (Calculation)
 }
